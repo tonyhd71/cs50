@@ -20,7 +20,6 @@ function retrieveEnd() {
     }
 }
 function yearsToThresh() {
-    console.log(n);
     while (n < endingPopulation) {
         n = n + ((Math.trunc(n/3))-(Math.trunc(n/4)));
         y++;

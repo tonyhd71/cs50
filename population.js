@@ -6,7 +6,7 @@ function retrieveStart() {
     n = parseInt(n);
     if (n < 9) {
         console.log("Input number greater than 9");
-        retrieveStart()
+        retrieveStart();
     } else {
         retrieveEnd();
     }

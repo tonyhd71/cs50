@@ -11,11 +11,13 @@ function getCents() {
     let isValid = validChange();
     if (isValid === true) {
         numQuarters = calculateQuarters();
-        //console.log("there are " + numQuarters + " quarters"); 
         numDimes = calculateDimes();
         numNickels = calculateNickels();
-        console.log(numDimes + " dimes there are and there are " + centsLeft + " cents left and " + numQuarters + " quarters"); 
-        numPennies = calculatePennies;
+        numPennies = calculatePennies();
+        alert("Pennies: " + numPennies + '\n' +
+        "Nickels: " + numNickels + '\n' +
+        "Dimes: " + numDimes + '\n' +
+        "Quarters: " + numQuarters + '\n');
     }
 }
 function validChange() {
@@ -27,12 +29,12 @@ function validChange() {
 }
 function calculatePennies() {
     centsLeft -= numNickels*5;
+    numPennies = Math.trunc(centsLeft/1);
+    return numPennies;
 }
 function calculateNickels() {
     centsLeft -= numDimes*10;
-    //console.log(centsLeft + " cents are left"); 
     numNickels = Math.trunc(centsLeft/5);
-    //console.log("there are " + numNickels + " nickels");
     return numNickels;
 
 }

@@ -3,6 +3,7 @@ let numPennies;
 let numNickels;
 let numDimes;
 let numQuarters;
+let centsLeft;
 
 function getCents() {
     cents = prompt("How many cents", 1);
@@ -10,12 +11,15 @@ function getCents() {
     let isValid = validChange();
     if (isValid === true) {
         numQuarters = calculateQuarters();
-        console.log("there are " + numQuarters + " quarters"); // here so far 
+        console.log("there are " + numQuarters + " quarters"); 
+        numDimes = calculateDimes();
+        console.log(numDimes + " dimes there are and there are " + centsLeft + "cents left"); //here so far
+        numNickels = calculateNickels();
     }
 }
 function validChange() {
     if (cents <0 || cents > 99) {
-        return false;
+        getCents();
     } else {
         return true;
     }
@@ -27,23 +31,16 @@ function calculateNickels() {
 
 }
 function calculateDimes() {
-
+    centsLeft = cents - numQuarters*25;
+    if (centsLeft <10) {
+        numDimes = parseInt(0);
+    } else if (centsLeft >=10) {
+        numDimes = Math.trunc(centsLeft/10);
+    }
+    return numDimes;
 }
 function calculateQuarters() {
-    if (cents < 25) {
-        numQuarters = parseInt(0);
-        //console.log(numQuarters);
-    } else if (cents >= 25 && cents < 50) {
-        numQuarters = parseInt(1);
-        //console.log(numQuarters);
-    } else if (cents >=50 && cents < 75) {
-        numQuarters = parseInt(2);
-       // console.log(numQuarters);
-    } else if (cents >=75 && cents < 99) {
-        numQuarters = parseInt(3);
-        //console.log(numQuarters);
-    }
+    numQuarters = Math.trunc(cents/25);
     return numQuarters;
-    //console.log(numQuarters);
 }
 getCents();

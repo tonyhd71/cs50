@@ -32,11 +32,7 @@ function calculateNickels() {
 }
 function calculateDimes() {
     centsLeft = cents - numQuarters*25;
-    if (centsLeft <10) {
-        numDimes = parseInt(0);
-    } else if (centsLeft >=10) {
-        numDimes = Math.trunc(centsLeft/10);
-    }
+    numDimes = Math.trunc(centsLeft/10);
     return numDimes;
 }
 function calculateQuarters() {
